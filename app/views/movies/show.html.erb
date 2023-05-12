@@ -18,6 +18,25 @@
       </div>
     </div>
 
+
+    <% if Bookmark.where({ :movie_id => @the_movie.id, :user_id => session.fetch(:user_id)}) %>
+      <form action ="/insert_bookmark" method = "post">
+
+        <input type ="hidden" name = "query_movie_id" value = "<%= @the_movie.id %>">
+        <button> Bookmark this movie! </button> 
+    
+      </form>
+    <% else %>
+
+      <form action ="/insert_bookmark" method = "post">
+
+        <input type ="hidden" name = "query_movie_id" value = "<%= @the_movie.id %>">
+        <button> Unbookmark this movie! </button> 
+      
+       </form>
+
+    <% end %>
+
     <dl>
       <dt>
         Title
