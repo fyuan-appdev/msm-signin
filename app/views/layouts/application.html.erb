@@ -17,6 +17,10 @@
   <body>
 
   <ul>
+    <%if session.fetch(:user_id) != nil%>
+      <% id = session.fetch(:user_id) %>
+      <h3>Hi <%= User.where(:id => id).at(0).first_name %> !</h3>
+    <% end %>
     <li>
       <a href ="/movies">Moives<a>
     </li>
@@ -29,8 +33,24 @@
     <li>
       <a href ="/characters">Characters<a>
     </li>
-  </ul>
+    <%if session.fetch(:user_id) != nil%>
+      <li>
+        <a href ="/user_sign_out">Sign Out<a>
+      </li>
+    <% else %>
+      <li>
+        <a href ="/user_sign_in">Sign In<a>
+      </li>  
+      <li>
+        <a href ="/user_sign_up">Sign Up<a>
+      </li>  
+    <% end %>
 
+
+    
+  </ul>
+    <%= alert %>
+    <%= notice %>
     <%= yield %>
   </body>
 </html>
