@@ -10,6 +10,6 @@
 #  movie_id   :integer
 #
 class Character < ApplicationRecord
-  belongs_to :moive
-  belongs_to :actor
+  belongs_to :movies
+  belongs_to :actors
 end
